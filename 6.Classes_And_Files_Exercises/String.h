@@ -9,11 +9,14 @@ private:
 public:
 	String(const char* str = "");
 	String(const String& other);
+	String& operator=(const String& other);
+	String& operator=(const char* str);
 	~String();
 	String(String&& other);
 	String operator+(const String& str2);
 	String operator+(const char* str2);
-	char* operator[](int index);
+	friend String operator+(const char* str1, const String& str2);
+	char operator[](int index);
 	void operator+=(const char* str);
 	void operator+=(const String& other);
 	bool operator==(const char* str);
@@ -24,4 +27,6 @@ public:
 	bool Empty();
 	const char* c_str();
 };
+
+String operator+(const char* str1, const String& str2);
 #endif
